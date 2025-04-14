@@ -1,0 +1,373 @@
+/* ページ全体の基本設定（文字・背景・余白） */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+}
+
+/* ヘッダー（上のタイトル部分） */
+.header {
+  background-color: #575144af; 
+  padding: 20px 40px;
+  backdrop-filter: blur(2px); /* ←これが背景ぼかし効果 */
+  -webkit-backdrop-filter: blur(2px); /* Safari対応 */
+  position: fixed;        /* ←これで固定！ */
+  top: 0;                 /* ←画面上部にぴったり貼りつけ */
+  left: 0;
+  width: 100%;            /* ←横幅いっぱいに */
+  z-index: 1000;          /* ←重なり優先度を高くしておく */
+}
+
+
+
+
+/* ヘッダー内のロゴとナビゲーション */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.logo {
+  font-size: 28px;
+  color: #e7f8df9d;
+  font-family: 'Playfair Display', serif; /* 高級感 */
+  font-weight: 700; /* 太くして強調 */
+  letter-spacing: 0.24em; /* 少し広げると品よく */
+  margin-bottom: 10px;
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap; /* アイテムが画面に合わせて折り返す */
+  justify-content: flex-end; /* 右寄せ */
+  width: 100%; /* 幅100%にする */
+  max-width: 100%; /* 最大幅を100%にする */
+}
+
+/* ナビゲーション内のリンク */
+.nav a {
+  margin-left: 24px;
+  text-decoration: none;
+  color: #e7f8df86;
+  font-weight: 500;
+  font-size: 16px;
+  transition: color 0.3s ease;
+  font-family: 'Playfair Display', serif;
+}
+
+/* ホバー時 */
+.nav a:hover {
+  color: #1e271a81; 
+}
+
+/* サブタイトル（キャッチコピー） */
+.motto {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 500;
+  color: #2d2e2db3;
+  text-align: center; 
+  margin-top: 100px; 
+  letter-spacing: 1.2px; 
+  line-height: 1.6; 
+  backdrop-filter: blur(2px); 
+  padding: 12px 24px; 
+}
+
+.motto::after {
+  content: "";
+  display: block;
+  width: clamp(100px, 10vw, 10%);  /* 最小値40%、最適値60%、最大値80%に設定 */
+  height: 2px;
+  background-color: #2d2e2db3;
+  margin: 12px auto 0;
+  border-radius: 1px;
+}
+
+
+
+
+
+
+/* 商品一覧エリア */
+body {
+  padding: 20px;
+  padding-top: 80px;
+}
+
+
+/* 商品一覧のレイアウト */
+.product-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+  max-width: 1000px; /* 表示幅の上限を決めて中央寄せ */
+  margin: 0 auto;   /* 左右中央ぞろえ */
+  padding: 100px;
+  justify-items: center; /* 各カード自体も中央に */
+  background: rgba(216, 199, 168, 0.377); /* 半透明で背景見せる */
+  backdrop-filter: blur(5px); /* 背景ぼかしでふんわり感 */
+  -webkit-backdrop-filter: blur(5px); /* Safari対応 */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* 商品カードの設定 */
+.product-card {
+  position: relative;
+  overflow: visible; /* ボーダーがカード外に出るように設定 */
+  padding: 16px; 
+  text-align: center;
+  margin-bottom: 20px; /* 商品カード間の縦方向の隙間 */
+  display: flex;
+  flex-direction: column; /* 縦並びに */
+  justify-content: space-between; /* 要素間のスペースを均等に */
+  transition: transform 0.3s ease;
+  z-index: 1; /* カードが前面に出るように */
+}
+
+/* 商品画像の設定 */
+.product-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px; 
+  object-fit: cover;
+  transition: transform 0.4s ease;
+  z-index: -1; /* 画像がボーダーより後ろに配置される */
+
+  filter: brightness(0.9) contrast(1.05) saturate(0.95);
+  transition: filter 0.3s ease;
+}
+
+
+
+/* ホバー時に画像の拡大 */
+.product-card:hover img {
+  transform: scale(1.02);
+}
+
+.product-card img:hover {
+  filter: brightness(1.05) contrast(1.1) saturate(1.1);
+}
+
+/* 4本の線を1本ずつ定義 */
+.product-card::before,
+.product-card::after,
+.product-card span::before,
+.product-card span::after {
+  content: '';
+  position: absolute;
+  background-color: #524b4573;
+  transition: all 0.4s ease;
+  opacity: 0;
+  z-index: 0; /* ボーダーが画像とカードの間に挿入される */
+}
+
+/* 上の線 */
+.product-card::before {
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+}
+
+/* 下の線 */
+.product-card::after {
+  bottom: 0;
+  right: 0;
+  width: 0%;
+  height: 2px;
+}
+
+/* 左の線（ラッパー必要） */
+.product-card span::before {
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 0%;
+}
+
+/* 右の線（ラッパー必要） */
+.product-card span::after {
+  top: 0;
+  right: 0;
+  width: 2px;
+  height: 0%;
+}
+
+/* ホバー時：線がにゅっと出現 */
+.product-card:hover::before,
+.product-card:hover::after {
+  width: 100%;
+  opacity: 1;
+}
+
+.product-card:hover span::before,
+.product-card:hover span::after {
+  height: 100%;
+  opacity: 1;
+}
+
+.product-card span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; /* これでspanの中で上下左右の線が効くように */
+  pointer-events: none; /* hoverイベントをspanが邪魔しないように */
+  pointer-events: none;
+  z-index: 8;
+}
+
+
+
+
+
+/* 商品名 */
+.product-card h3 {
+  font-size: 1.1rem;
+  margin: 10px 0 5px;
+  font-family: 'Georgia', serif;
+  overflow: hidden; /* 長いテキストを省略 */
+  text-overflow: ellipsis; /* 省略記号「...」を追加 */
+  white-space: nowrap; /* テキストを1行に制限 */
+  word-wrap: break-word; /* 長い単語を途中で折り返し */
+  max-width: 100%; /* 幅をカードの幅に合わせる */
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  color: #756c58;
+}
+
+/* 商品名の改行や省略を防ぐ */
+.product-card p {
+  font-size: 1rem;
+  color: #f0f7f0;
+  margin: 0 0 10px;
+  word-wrap: break-word;
+  display: inline-block;
+  background-color: #f5f5f556;
+  color: #5e5a4d;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+}
+
+/* 値段 */
+.product-card p {
+  font-size: 0.8rem;
+  color: #756c58;
+  margin: 0 0 10px;
+}
+
+/* 「カートに入れる」ボタン */
+.product-card button {
+  background-color: #899e83;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* ボタンにマウスをのせたときのスタイル */
+.product-card button:hover {
+  background-color: rgb(60, 73, 64);
+}
+
+/* フッター（ページ下部） */
+footer {
+  background-color: #575144af;
+  color: #e7f8df9d;
+  text-align: center;
+  padding: 10px 0;  /* 上下の余白を少し小さく */
+  margin-top: 50px; /* 上部に隙間*/
+}
+
+
+
+
+
+
+
+
+@media (max-width: 600px) {
+  .container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav {
+    width: auto;
+    margin-top: 10px;
+    justify-content: flex-end;
+  }
+
+  .nav a {
+    display: block;
+    margin: 8px 0;
+  }
+}
+
+
+
+
+/* 全体の背景設定 */
+body {
+  position: relative;
+  background-image: url('https://i.postimg.cc/x8GYJjg5/kristina-tochilko-0d-GJsp4-B3o-unsplash-1.jpg'); /* 背景画像のURL */
+  background-size: cover; /* 画面いっぱいに背景を広げる */
+  background-position: center; /* 画面中央に背景を配置 */
+  background-attachment: fixed; /* スクロールしても背景が動かないように */
+  background-repeat: no-repeat; /* 背景を繰り返さない */
+  z-index: 0;
+}
+
+/* 背景画像のオーバーレイ */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.233); /* 半透明 */
+  pointer-events: none; 
+  z-index: -1; 
+}
+
+/*背景ぼかし*/
+.blur-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://i.postimg.cc/x8GYJjg5/kristina-tochilko-0d-GJsp4-B3o-unsplash-1.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: blur(2px);
+  z-index: -1;
+}
+
+.blur-bg::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(255, 255, 255, 0.15); /* ほんのり白で柔らかく */
+}
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Home - Botanical Shop</title>
+  <link rel="stylesheet" href="home.css">
+</head>
+
+<body>
+  <!-- サイドメニュー -->
+  <nav class="side-nav">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="cart.html">Cart</a></li>
+    </ul>
+  </nav>
+
+  <!-- 背景動画 -->
+  <div class="video-wrapper">
+    <video autoplay muted loop playsinline id="bg-video">
+      <source src="https://files.catbox.moe/8oct52.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <!-- タイトルとサブタイトル -->
+  <div class="text-container">
+    <h1 class="main-title">Slow Down with Style.</h1>
+    <p class="sub-title">緑と過ごす、心にゆとりのひととき。</p>
+  </div>
+
+
+
+  <!-- 英文と画像セクション -->
+  <section class="content-section">
+    <div class="right-content">
+      <div class="scrolling-text">
+        <p>Botanical life makes everything better.</p>
+        <p>Find your rhythm. Embrace the green.</p>
+        <p>Balance your mind. Let nature shape your space.</p>
+        <p>Calm your soul with nature's touch.</p>
+        <p>Live simply. Grow beautifully.</p>
+      </div>
+    </div>
+  </section>
+
+
+<!-- 右ボタンエリア -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Home - Botanical Shop</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- 右側の縦長ボタンエリア -->
+  <a href="shop.html" class="shop-button-area"></a>
+
+
+<!-- カーソル追従テキスト -->
+<div class="cursor-tooltip">
+  <span class="tooltip-big">go</span>
+  <span>to</span>
+  <span>shop</span>
+</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+  
+
+
+
+
+
+  <!--font-->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&display=swap" rel="stylesheet">
+
+
+
+
+
+  <!-- JavaScriptはここに！ -->
+  <script src="script.js" defer></script>
+
+  <script>
+    // カート機能
+    let cart = [];
+
+    function addToCart(productName, price) {
+      cart.push({ name: productName, price: price });
+      alert(productName + " がカートに追加されました！");
+    }
+
+    function updateCart() {
+      const cartItems = document.getElementById('cart-items');
+      if (!cartItems) return;
+
+      cartItems.innerHTML = '';
+      cart.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = `${item.name} - ¥${item.price}`;
+        cartItems.appendChild(li);
+      });
+    }
+
+    updateCart();
+  </script>
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,252 @@
+/* =====================
+    全体の初期設定
+===================== */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
+    background: transparent;
+    font-family: 'Georgia', serif;
+    position: relative;
+}
+
+/* =====================
+    背景動画（全画面表示）
+===================== */
+.video-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+#bg-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video-wrapper::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.219); /* オーバーレイの色と透明度 */
+    z-index: 1; /* オーバーレイが動画の上に来るように */
+}
+
+
+
+/* =====================
+    サイドナビゲーション
+===================== */
+.side-nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    background-color: #575144af;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.side-nav ul {
+    list-style: none;
+    padding: 0;
+}
+.side-nav li {
+    margin: 35px 0;
+}
+.side-nav a {
+    color: #e7f8dfc4;
+    font-weight: bold;
+    text-decoration: none;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    padding: 10px 15px;
+    transition: color 0.3s ease;
+    font-weight: 530;  /* メニューの文字を少し太く設定 */
+}
+.side-nav a:hover {
+    color: #1e271a81;
+}
+
+
+
+/* =====================
+    タイトル・サブタイトル
+===================== */
+.main-title, .sub-title {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    text-align: center;
+    z-index: 10;
+    white-space: nowrap;
+}
+
+.main-title {
+    top: 30%;
+    font-size: clamp(1.5rem, 5vw, 3.5rem);
+    font-weight: 800; /* 太さを700に設定 */
+}
+
+.sub-title {
+    top: 38%;
+    font-size: clamp(1rem, 2.5vw, 2rem);
+    font-weight: 400; /* 標準の太さ */
+}
+
+
+/* =====================
+    タイトル・サブタイトルのアニメーション
+===================== */
+.main-title, .sub-title {
+    position: fixed; 
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    text-align: center;
+    z-index: 10;
+    white-space: nowrap;
+    opacity: 0;
+    animation: fadeInDown 1.5s ease-in-out forwards; 
+}
+
+.main-title {
+    top: 30%;
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-family: 'Georgia', serif; /* おしゃれなフォント */
+    font-weight: 800;
+    animation-delay: 0s;  /* タイトルの表示はすぐ */
+}
+
+
+    .sub-title {
+        top: 38%; 
+        font-size: clamp(0.5rem, 1.5vw, 1.3rem); 
+        font-family: 'Palatino', serif;
+        font-weight: 400;
+        animation-delay: 1s;
+    }
+    
+/* タイトルとサブタイトルが下からフェードイン */
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -30%);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+
+
+
+/* =====================
+    英文のアニメーション
+===================== */
+.scrolling-text {
+    position: fixed;
+    top: 58%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* 中央揃えを維持 */
+    color: white;
+    font-family: 'Georgia', serif;
+    font-size: clamp(1.2rem, 2.2vw, 1.6rem); /* フォントサイズ調整 */
+    font-weight: 100;
+    opacity: 0;
+    animation: fadeInUp 3.5s ease-in-out forwards;
+    animation-delay: 2.5s; /* 英文はタイトルとサブタイトルの後に表示 */
+    white-space: nowrap;
+}
+
+/* フェードイン＋ゆっくり上に移動するアニメーション */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, 50%);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.scrolling-text p {
+    margin: 0.3em 0;  /* 行間をほどよく */
+    line-height: 1.5; /* 行の高さ（任意で調整） */
+    text-align: center; /* 中央揃え */
+}
+
+
+
+
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    font-family: 'Noto Serif', serif;
+  }
+  
+  /* 右側のボタンエリア */
+  .shop-button-area {
+    position: fixed;
+    top: 0;
+    right: 50px;
+    width: 430px;
+    height: 100vh;
+    background-color: #af9e8a2f;
+    z-index: 998;
+    pointer-events: auto;
+    transition: background-color 0.3s ease;
+  }
+  
+  .shop-button-area:hover {
+    background-color: #756b5f2f;
+  }
+  
+  /* カーソル追従のツールチップ */
+  .cursor-tooltip {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 100px;
+    background-color: #677c5e81;
+    color: white;
+    font-size: 0.75rem;
+    font-family: 'Georgia', serif;
+    display: flex;
+    flex-direction: column; /* 縦に並べる */
+    align-items: center;
+    text-align: center; /* ← 中央揃えに */
+    justify-content: center;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    z-index: 10001;
+    transition: opacity 0.3s ease;
+  }
+  
+  
+  .tooltip-big {
+    font-size: 1.1rem; /* フォントサイズを大きく */
+    font-weight: bold;
+    gap: 0; /* ← ここで行間の隙間をなくす */
+    line-height: 1; /* 行の高さを詰める */
+  }
